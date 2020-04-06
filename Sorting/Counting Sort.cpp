@@ -26,28 +26,47 @@ int main()
 // } Driver Code Ends
 // The main function that sort the given string arr[] in
 // alphabatical order
+
+#include <iostream>
+
 void countSort(char arr[])
 {
-    int t=arr.size();
-    int temp[t];
+    int t=26;
+    int count[t];
     
-    for(int i=0;i<t;i++)
+    int n=0;
+    
+    for(int i=0;arr[i]!='\0';i++)
     {
-        temp[i]=int(arr[i])
+        n++;
     }
     
-    int k=123;
-    int count[123];
-    
-    for(int i=97; i<k; i++)
+    for(int i=0;i<t;i++)
     {
         count[i]=0;
     }
     
-    for(int i=97; i<k; i++)
+    for(int i=0;i<n;i++)
     {
-        count[arr[]]
+        count[int(arr[i])-97]++;
     }
     
-
+    for(int i=1;i<t;i++)
+    {
+        count[i]=count[i-1]+count[i];
+    }
+    
+    char output[n+1];
+    
+    for(int i=n-1;i>=0;i--)
+    {
+        output[count[int(arr[i])-97]-1] = arr[i];
+        count[int(arr[i])-97]--;
+    }
+    
+    for(int i=0;i<n;i++)
+    {
+        arr[i]=output[i];
+    }
+    
 }
