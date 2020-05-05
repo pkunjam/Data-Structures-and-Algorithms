@@ -101,9 +101,34 @@ and a pointer to right child */
 };
 */
 
+void Mirror(Node* &root)
+{
+    if(root==NULL) return;
+    
+    Mirror(root->left);
+    Mirror(root->right);
+    
+    Node* temp = root->left;
+    root->left = root->right;
+    root->right = temp;
+}
+
+bool isStructSame(Node* l, Node* r)
+{
+    if(l==NULL && r==NULL) return true;
+    
+    if(l==NULL || r==NULL) return false;
+    
+    return (isStructSame(l->left,r->left) && isStructSame(l->right,r->right));
+}
+
 bool IsFoldable(Node* root)
 {
-    // Your code goes here
+    if(root==NULL) return true;
+    
+    Mirror(root->left);
+    
+    return isStructSame(root->left,root->right);
 }
 
 // { Driver Code Starts.
