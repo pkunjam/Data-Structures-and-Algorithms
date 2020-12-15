@@ -17,3 +17,23 @@ int firstDuplicateValue(vector<int> array) {
 	
 	return -1;
 }
+
+
+// O(n) time and O(1) space
+#include <vector>
+using namespace std;
+
+int firstDuplicateValue(vector<int> array) { 
+	
+	for(int i=0; i<array.size(); i++)
+	{
+		int idx = abs(array[i]);
+
+		if(array[idx-1] < 0)
+			return idx;
+		
+		array[idx-1] *= -1;
+	}
+	
+	return -1;
+}
