@@ -1,14 +1,16 @@
-// if K<=33 || time and space O(K)
+// using nCr logic || time and space O(N)
 vector<int> Solution::getRow(int A) {
     
-    int sum = pow(11, A);
+    int j=A+1;
+    int val = 1;
     vector<int> sol;
     
-    for(int i=0; i<=A; i++)
+    for(int i=1; i<=j; i++)
     {
-        sol.push_back(sum%10);
-        sum /= 10;
+        sol.push_back(val);
+        val = val * (j-i)/i;
     }
+    
     
     return sol;
 }
